@@ -7819,7 +7819,7 @@
 											"top": 531.5,
 											"width": 165,
 											"height": 13,
-											"text": "Get booking request"
+											"text": "View booking request"
 										},
 										{
 											"_type": "LabelView",
@@ -23463,7 +23463,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Get booking request",
+					"name": "View booking request",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
