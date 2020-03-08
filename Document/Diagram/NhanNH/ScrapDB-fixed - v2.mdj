@@ -1502,7 +1502,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 679,
+									"left": 703,
 									"top": 105,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1538,7 +1538,7 @@
 										"$ref": "AAAAAAFwbD1agKS5wYc="
 									},
 									"font": "Arial;13;0",
-									"left": 679,
+									"left": 703,
 									"top": 304,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -1556,7 +1556,7 @@
 								"$ref": "AAAAAAFwWuV9pddlKgY="
 							},
 							"lineStyle": 2,
-							"points": "648:112;664:112;664:336",
+							"points": "648:112;688:112;688:336",
 							"nameLabel": {
 								"$ref": "AAAAAAFwbD1agKS6AuU="
 							},
@@ -4699,7 +4699,7 @@
 									},
 									"font": "Arial;13;1",
 									"left": 416,
-									"top": 485,
+									"top": 517,
 									"width": 174.45361328125,
 									"height": 13,
 									"text": "Device_Key"
@@ -4725,7 +4725,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 421,
-											"top": 508,
+											"top": 540,
 											"width": 164.45361328125,
 											"height": 13
 										},
@@ -4740,7 +4740,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 421,
-											"top": 523,
+											"top": 555,
 											"width": 164.45361328125,
 											"height": 13
 										},
@@ -4755,7 +4755,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 421,
-											"top": 538,
+											"top": 570,
 											"width": 164.45361328125,
 											"height": 13
 										},
@@ -4770,21 +4770,21 @@
 											},
 											"font": "Arial;13;0",
 											"left": 421,
-											"top": 553,
+											"top": 585,
 											"width": 164.45361328125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 416,
-									"top": 503,
+									"top": 535,
 									"width": 174.45361328125,
 									"height": 68
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 416,
-							"top": 480,
+							"top": 512,
 							"width": 174.45361328125,
 							"height": 91,
 							"nameLabel": {
