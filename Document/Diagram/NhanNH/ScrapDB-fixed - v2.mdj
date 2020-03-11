@@ -7661,7 +7661,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwWtURdtXkFbY="
 							},
-							"name": "note",
+							"name": "description",
 							"length": 0
 						},
 						{
@@ -7707,7 +7707,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwWtURdtXkFbY="
 							},
-							"name": "quality",
+							"name": "quantity",
 							"length": 0
 						},
 						{
