@@ -1,0 +1,1594 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Scrap Collector Apis",
+    "description": "This is apis version 1.0 for Scrap Collector App",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth",
+      "description": "APIs to manage login, register, logout"
+    },
+    {
+      "name": "account",
+      "description": "APIs to view, update profile"
+    },
+    {
+      "name": "posts",
+      "description": "APIs to manage post scrap"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "description": "Login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "description": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Register Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "description": "view profile",
+        "summary": "Gets a user profile by ID",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileRO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "account"
+        ],
+        "description": "Update profile",
+        "summary": "Update account",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditProfileDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "View Profile Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EditProfileRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Homeowner - post scrap",
+        "description": "Homeowner create post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Register Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Search post by status",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "example": [
+                "new",
+                "booked",
+                "sold"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindPostByStatusRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Search post by postId",
+        "parameters": [
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostRO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Delete",
+        "description": "Delete post",
+        "parameters": [
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/booking": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Get all booking in waiting status of all posts of homeowner",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/booking": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Get booking of 1 post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/booking/{booking-id}/accept": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "description": "Accept 1 booking request for 1 post and reject others request for that post. Change post status from new -> booked, booking status from waiting -> accepted, others booking status from waiting -> rejected. Send notification for Collector (Accept or Reject).",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "booking-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/booking/{booking-id}/reject": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "description": "Reject 1 booking request for 1 post Send notification for Collector (Reject)",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "booking-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/update": {
+      "put": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Update post",
+        "description": "Homeowner update their post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostUpdateRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/sold": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "description": "Change post status booked -> sold, Sold this booked post.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoldPostRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/resell": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "description": "Change post status from booked -> new and Reject previous accepted booking of this post.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{post-id}/reviews": {
+      "post": {
+        "tags": [
+          "posts"
+        ],
+        "description": "Review accepted booking collector of this post.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "post-id",
+            "in": "path",
+            "description": "postId",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/provinces": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Get All Provinces",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvincesRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/districts": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Get All Districts",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DistrictsRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wards": {
+      "get": {
+        "tags": [
+          "posts"
+        ],
+        "summary": "Get All Wards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success operation",
+            "headers": {
+              "accountId": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Authentication"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WardsRO"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "khanh"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          }
+        }
+      },
+      "LoginRO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "khanh"
+          },
+          "roleId": {
+            "type": "number",
+            "example": 1
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          }
+        }
+      },
+      "RegisterDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "khanh"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          },
+          "email": {
+            "type": "string",
+            "example": "nhannhse63259@fpt.edu.vn"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Nhan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen Hoang"
+          },
+          "phone": {
+            "type": "string",
+            "example": "090*******"
+          },
+          "roleId": {
+            "type": "number",
+            "example": "1"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "detailsAddress": {
+                "type": "string",
+                "example": "123 ABC Khu pho 3"
+              },
+              "provinceId": {
+                "type": "number",
+                "example": "1"
+              },
+              "wardId": {
+                "type": "number",
+                "example": "1"
+              },
+              "districtId": {
+                "type": "number",
+                "example": "1"
+              }
+            }
+          }
+        },
+        "required": [
+          "username",
+          "password",
+          "phone",
+          "address",
+          "firstName"
+        ]
+      },
+      "RegisterRO": {
+        "type": "object",
+        "properties": {
+          "notification": {
+            "type": "string",
+            "example": "Register success"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "roleId": {
+            "type": "string"
+          }
+        }
+      },
+      "ProfileRO": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "Nhan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen Hoang"
+          },
+          "phone": {
+            "type": "number",
+            "example": "090******"
+          },
+          "email": {
+            "type": "string",
+            "example": "NhanNHSE63259@fpt.edu.vn"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "detailsAddress": {
+                "type": "string",
+                "example": "123 ABC khu pho 3"
+              },
+              "province": {
+                "type": "string",
+                "example": "AAA"
+              },
+              "ward": {
+                "type": "string",
+                "example": "BBB"
+              },
+              "district": {
+                "type": "string",
+                "example": "CCC"
+              }
+            }
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "phone",
+          "email",
+          "address"
+        ]
+      },
+      "EditProfileDTO": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "Nhan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen Hoang"
+          },
+          "phone": {
+            "type": "number",
+            "example": "090******"
+          },
+          "email": {
+            "type": "string",
+            "example": "NhanNHSE63259@fpt.edu.vn"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "detailsAddress": {
+                "type": "string",
+                "example": "123 ABC khu pho 3"
+              },
+              "province": {
+                "type": "string",
+                "example": "AAA"
+              },
+              "ward": {
+                "type": "string",
+                "example": "BBB"
+              },
+              "district": {
+                "type": "string",
+                "example": "CCC"
+              }
+            }
+          },
+          "password": {
+            "type": "string",
+            "example": "*********"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "phone",
+          "email",
+          "address"
+        ]
+      },
+      "EditProfileRO": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "Nhan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen Hoang"
+          },
+          "phone": {
+            "type": "number",
+            "example": "090******"
+          },
+          "email": {
+            "type": "string",
+            "example": "NhanNHSE63259@fpt.edu.vn"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "detailsAddress": {
+                "type": "string",
+                "example": "123 ABC khu pho 3"
+              },
+              "province": {
+                "type": "string",
+                "example": "AAA"
+              },
+              "ward": {
+                "type": "string",
+                "example": "BBB"
+              },
+              "district": {
+                "type": "string",
+                "example": "CCC"
+              }
+            }
+          }
+        }
+      },
+      "PostDTO": {
+        "type": "object",
+        "properties": {
+          "postData": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "Cần bán vibranium"
+              },
+              "imageList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "link uri",
+                    "link uri"
+                  ]
+                }
+              },
+              "price": {
+                "type": "number",
+                "example": "$500"
+              },
+              "contactNumber": {
+                "type": "string",
+                "example": "090******"
+              },
+              "description": {
+                "type": "string",
+                "example": "Dọn nhà thấy rác, nên mún bán"
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "detailsAddress": {
+                    "type": "string",
+                    "example": "123 ABC khu pho 3"
+                  },
+                  "province": {
+                    "type": "string",
+                    "example": "AAA"
+                  },
+                  "ward": {
+                    "type": "string",
+                    "example": "BBB"
+                  },
+                  "district": {
+                    "type": "string",
+                    "example": "CCC"
+                  }
+                }
+              }
+            }
+          },
+          "availableTimeList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date",
+              "example": [
+                "2020-03-03T04:30:47+0000",
+                "2020-03-09T04:30:47+0000"
+              ]
+            }
+          },
+          "detailList": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "vibranium A"
+              },
+              "description": {
+                "type": "string",
+                "example": "qqqqqqqqqqqqqqqq"
+              },
+              "category": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "vibranium"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "example": "kg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "title",
+          "contactNumber",
+          "availableTimeList",
+          "detailList"
+        ]
+      },
+      "PostRO": {
+        "type": "object",
+        "properties": {
+          "postData": {
+            "type": "object",
+            "properties": {
+              "postDataId": {
+                "type": "number",
+                "example": "1"
+              },
+              "title": {
+                "type": "string",
+                "example": "Cần bán vibranium"
+              },
+              "imageList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "link uri",
+                    "link uri"
+                  ]
+                }
+              },
+              "price": {
+                "type": "number",
+                "example": "$500"
+              },
+              "contactNumber": {
+                "type": "string",
+                "example": "090******"
+              },
+              "description": {
+                "type": "string",
+                "example": "Dọn nhà thấy rác, nên mún bán"
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "detailsAddress": {
+                    "type": "string",
+                    "example": "123 ABC khu pho 3"
+                  },
+                  "province": {
+                    "type": "string",
+                    "example": "AAA"
+                  },
+                  "ward": {
+                    "type": "string",
+                    "example": "BBB"
+                  },
+                  "district": {
+                    "type": "string",
+                    "example": "CCC"
+                  }
+                }
+              }
+            }
+          },
+          "availableTimeList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date",
+              "example": [
+                "2020-03-03T04:30:47+0000",
+                "2020-03-09T04:30:47+0000"
+              ]
+            }
+          },
+          "detailList": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "vibranium A"
+              },
+              "description": {
+                "type": "string",
+                "example": "qqqqqqqqqqqqqqqq"
+              },
+              "category": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "vibranium"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "example": "kg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "title",
+          "contactNumber",
+          "availableTimeList",
+          "detailList"
+        ]
+      },
+      "PostUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "postData": {
+            "type": "object",
+            "properties": {
+              "postDataId": {
+                "type": "number",
+                "example": "1"
+              },
+              "title": {
+                "type": "string",
+                "example": "Cần bán vibranium"
+              },
+              "imageList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "link uri",
+                    "link uri"
+                  ]
+                }
+              },
+              "price": {
+                "type": "number",
+                "example": "$500"
+              },
+              "contactNumber": {
+                "type": "string",
+                "example": "090******"
+              },
+              "description": {
+                "type": "string",
+                "example": "Dọn nhà thấy rác, nên mún bán"
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "detailsAddress": {
+                    "type": "string",
+                    "example": "123 ABC khu pho 3"
+                  },
+                  "province": {
+                    "type": "string",
+                    "example": "AAA"
+                  },
+                  "ward": {
+                    "type": "string",
+                    "example": "BBB"
+                  },
+                  "district": {
+                    "type": "string",
+                    "example": "CCC"
+                  }
+                }
+              }
+            }
+          },
+          "availableTimeList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date",
+              "example": [
+                "2020-03-03T04:30:47+0000",
+                "2020-03-09T04:30:47+0000"
+              ]
+            }
+          },
+          "detailList": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "vibranium A"
+              },
+              "description": {
+                "type": "string",
+                "example": "qqqqqqqqqqqqqqqq"
+              },
+              "category": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "vibranium"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "example": "kg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "title",
+          "contactNumber",
+          "availableTimeList",
+          "detailList"
+        ]
+      },
+      "PostUpdateRO": {
+        "type": "object",
+        "properties": {
+          "postData": {
+            "type": "object",
+            "properties": {
+              "postDataId": {
+                "type": "number",
+                "example": "1"
+              },
+              "title": {
+                "type": "string",
+                "example": "Cần bán vibranium"
+              },
+              "imageList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "link uri",
+                    "link uri"
+                  ]
+                }
+              },
+              "price": {
+                "type": "number",
+                "example": "$500"
+              },
+              "contactNumber": {
+                "type": "string",
+                "example": "090******"
+              },
+              "description": {
+                "type": "string",
+                "example": "Dọn nhà thấy rác, nên mún bán"
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "detailsAddress": {
+                    "type": "string",
+                    "example": "123 ABC khu pho 3"
+                  },
+                  "province": {
+                    "type": "string",
+                    "example": "AAA"
+                  },
+                  "ward": {
+                    "type": "string",
+                    "example": "BBB"
+                  },
+                  "district": {
+                    "type": "string",
+                    "example": "CCC"
+                  }
+                }
+              }
+            }
+          },
+          "availableTimeList": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date",
+              "example": [
+                "2020-03-03T04:30:47+0000",
+                "2020-03-09T04:30:47+0000"
+              ]
+            }
+          },
+          "detailList": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "vibranium A"
+              },
+              "description": {
+                "type": "string",
+                "example": "qqqqqqqqqqqqqqqq"
+              },
+              "category": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "vibranium"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "example": "kg"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "DeleteRO": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string"
+          }
+        }
+      },
+      "FindPostByStatusRO": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "number"
+          },
+          "detailListBookingRequest": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "fromCollector": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "availableTimeList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date",
+                  "example": [
+                    "2020-03-03T04:30:47+0000",
+                    "2020-03-09T04:30:47+0000"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "BookingRO": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "number"
+          },
+          "detailListBookingRequest": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "Vibranium"
+              },
+              "fromCollector": {
+                "type": "string",
+                "example": "Dat"
+              },
+              "price": {
+                "type": "number",
+                "example": "$1000"
+              },
+              "availableTimeList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date",
+                  "example": [
+                    "2020-03-03T04:30:47+0000",
+                    "2020-03-09T04:30:47+0000"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotificationRO": {
+        "type": "object",
+        "properties": {
+          "notification": {
+            "type": "string",
+            "example": "Success or Not"
+          }
+        }
+      },
+      "SoldPostRO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "sold"
+          }
+        }
+      },
+      "ReviewDTO": {
+        "type": "object",
+        "properties": {
+          "star": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "ReviewRO": {
+        "type": "object",
+        "properties": {
+          "notification": {
+            "type": "string",
+            "example": "Success or Not"
+          }
+        }
+      },
+      "ProvincesRO": {
+        "type": "array"
+      },
+      "DistrictsRO": {
+        "type": "array"
+      },
+      "WardsRO": {
+        "type": "array"
+      }
+    }
+  }
+}
