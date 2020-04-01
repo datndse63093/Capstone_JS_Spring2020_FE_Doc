@@ -1175,16 +1175,16 @@
 											},
 											"font": "Arial;13;0",
 											"left": 626,
-											"top": 1034,
+											"top": 1026,
 											"width": 173,
 											"height": 52,
-											"text": "Linear Regression Equation for Scrap Price depends on Mass of Scrap and Unit Price of Categoty",
+											"text": "Linear Regression Equation for Recomending Scrap Price depends on Mass of Scrap and Categoty",
 											"wordWrap": true
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 568,
-									"top": 1024,
+									"top": 1016,
 									"width": 289,
 									"height": 73,
 									"nameLabel": {
@@ -1213,7 +1213,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 731,
-											"top": 996,
+											"top": 992,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -1231,7 +1231,7 @@
 										"$ref": "AAAAAAFw+NAutU6lX5A="
 									},
 									"lineStyle": 2,
-									"points": "717:983;717:1024",
+									"points": "717:983;717:1016",
 									"nameLabel": {
 										"$ref": "AAAAAAFw+lEP0zV2fUA="
 									}
@@ -1258,7 +1258,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 724,
-											"top": 1113,
+											"top": 1109,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -1276,7 +1276,7 @@
 										"$ref": "AAAAAAFw+lBG3zVYYtc="
 									},
 									"lineStyle": 2,
-									"points": "710:1096;710:1144",
+									"points": "710:1088;710:1144",
 									"nameLabel": {
 										"$ref": "AAAAAAFw+lEiuTV/gDM="
 									}
@@ -2015,7 +2015,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFw+HN3Y0wM9KY="
 							},
-							"name": "Linear Regression Equation for Scrap Price depends on Mass of Scrap and Unit Price of Categoty",
+							"name": "Linear Regression Equation for Recomending Scrap Price depends on Mass of Scrap and Categoty",
 							"ownedElements": [
 								{
 									"_type": "FCFlow",
