@@ -836,19 +836,19 @@
 												"$ref": "AAAAAAFx1M/f14+mgv0="
 											},
 											"font": "Arial;13;0",
-											"left": 834,
-											"top": 418,
-											"width": 140,
-											"height": 65,
+											"left": 810,
+											"top": 426,
+											"width": 164,
+											"height": 52,
 											"text": "Hash the coordinate of collector based on collector's current location and the radius distance",
 											"wordWrap": true
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 824,
-									"top": 408,
-									"width": 160,
-									"height": 85,
+									"left": 800,
+									"top": 416,
+									"width": 184,
+									"height": 73,
 									"nameLabel": {
 										"$ref": "AAAAAAFx1M/f14+nS68="
 									}
@@ -921,7 +921,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 913,
-											"top": 387,
+											"top": 391,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -939,7 +939,7 @@
 										"$ref": "AAAAAAFx1M7u64+F5Mg="
 									},
 									"lineStyle": 2,
-									"points": "899:381;899:408",
+									"points": "899:381;899:416",
 									"nameLabel": {
 										"$ref": "AAAAAAFx1NCV3Y++alM="
 									}
@@ -1165,16 +1165,16 @@
 											},
 											"font": "Arial;13;0",
 											"left": 818,
-											"top": 562,
+											"top": 546,
 											"width": 165,
-											"height": 39,
-											"text": "Filter nearby coordinate based on collector's position and radius distance",
+											"height": 26,
+											"text": "Combine all result of searching scraps",
 											"wordWrap": true
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 808,
-									"top": 552,
+									"top": 536,
 									"width": 185,
 									"height": 65,
 									"nameLabel": {
@@ -1201,8 +1201,8 @@
 											"left": 810,
 											"top": 690,
 											"width": 181,
-											"height": 26,
-											"text": "For each data in nearby result, get detail information of scrap",
+											"height": 52,
+											"text": "For each data in search nearby result, get detail information of scrap, and calculate distance of scrap",
 											"wordWrap": true
 										}
 									],
@@ -1210,54 +1210,9 @@
 									"left": 800,
 									"top": 680,
 									"width": 201,
-									"height": 65,
+									"height": 72,
 									"nameLabel": {
 										"$ref": "AAAAAAFx1S8pWZAwScI="
-									}
-								},
-								{
-									"_type": "FCFlowView",
-									"_id": "AAAAAAFx1TBy85BAs5Y=",
-									"_parent": {
-										"$ref": "AAAAAAFx1LD0rI5T/MM="
-									},
-									"model": {
-										"$ref": "AAAAAAFx1TBy8pA+neo="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAFx1TBy85BB2E8=",
-											"_parent": {
-												"$ref": "AAAAAAFx1TBy85BAs5Y="
-											},
-											"model": {
-												"$ref": "AAAAAAFx1TBy8pA+neo="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 916,
-											"top": 515,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 15,
-											"hostEdge": {
-												"$ref": "AAAAAAFx1TBy85BAs5Y="
-											},
-											"edgePosition": 1
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAFx1SXo+JAb80s="
-									},
-									"tail": {
-										"$ref": "AAAAAAFx1M/f14+mgv0="
-									},
-									"lineStyle": 2,
-									"points": "902:492;902:552",
-									"nameLabel": {
-										"$ref": "AAAAAAFx1TBy85BB2E8="
 									}
 								},
 								{
@@ -1282,7 +1237,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 914,
-											"top": 641,
+											"top": 633,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -1300,7 +1255,7 @@
 										"$ref": "AAAAAAFx1SXo+JAb80s="
 									},
 									"lineStyle": 2,
-									"points": "900:616;900:680",
+									"points": "900:600;900:680",
 									"nameLabel": {
 										"$ref": "AAAAAAFx1TCFhJBKTvw="
 									}
@@ -1348,6 +1303,209 @@
 									"points": "800:712;672:712",
 									"nameLabel": {
 										"$ref": "AAAAAAFx1TCWJJBTDUo="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAFx1VTr/JBdoIQ=",
+									"_parent": {
+										"$ref": "AAAAAAFx1LD0rI5T/MM="
+									},
+									"model": {
+										"$ref": "AAAAAAFx1VTr+ZBbngA="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFx1VTr/JBeTOM=",
+											"_parent": {
+												"$ref": "AAAAAAFx1VTr/JBdoIQ="
+											},
+											"font": "Arial;13;0",
+											"left": 554,
+											"top": 426,
+											"width": 141,
+											"height": 52,
+											"text": "Create range set with lower range and upper range based on inputted radius",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 544,
+									"top": 416,
+									"width": 161,
+									"height": 72,
+									"nameLabel": {
+										"$ref": "AAAAAAFx1VTr/JBeTOM="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAFx1V2b15BsSPw=",
+									"_parent": {
+										"$ref": "AAAAAAFx1LD0rI5T/MM="
+									},
+									"model": {
+										"$ref": "AAAAAAFx1V2b15BqVq0="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFx1V2b15BtktY=",
+											"_parent": {
+												"$ref": "AAAAAAFx1V2b15BsSPw="
+											},
+											"model": {
+												"$ref": "AAAAAAFx1V2b15BqVq0="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 751,
+											"top": 458,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAFx1V2b15BsSPw="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAFx1VTr/JBdoIQ="
+									},
+									"tail": {
+										"$ref": "AAAAAAFx1M/f14+mgv0="
+									},
+									"lineStyle": 2,
+									"points": "800:449;704:449",
+									"nameLabel": {
+										"$ref": "AAAAAAFx1V2b15BtktY="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAFx1WHCA5B75sA=",
+									"_parent": {
+										"$ref": "AAAAAAFx1LD0rI5T/MM="
+									},
+									"model": {
+										"$ref": "AAAAAAFx1WHCApB5XvI="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFx1WHCA5B84dQ=",
+											"_parent": {
+												"$ref": "AAAAAAFx1WHCA5B75sA="
+											},
+											"font": "Arial;13;0",
+											"left": 554,
+											"top": 546,
+											"width": 149,
+											"height": 52,
+											"text": "For each range in range set, search scrap between lower range and upper range",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 544,
+									"top": 536,
+									"width": 169,
+									"height": 72,
+									"nameLabel": {
+										"$ref": "AAAAAAFx1WHCA5B84dQ="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAFx1WO6NJCPIOU=",
+									"_parent": {
+										"$ref": "AAAAAAFx1LD0rI5T/MM="
+									},
+									"model": {
+										"$ref": "AAAAAAFx1WO6NJCNGNw="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFx1WO6NJCQRLY=",
+											"_parent": {
+												"$ref": "AAAAAAFx1WO6NJCPIOU="
+											},
+											"model": {
+												"$ref": "AAAAAAFx1WO6NJCNGNw="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 639,
+											"top": 504,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAFx1WO6NJCPIOU="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAFx1WHCA5B75sA="
+									},
+									"tail": {
+										"$ref": "AAAAAAFx1VTr/JBdoIQ="
+									},
+									"lineStyle": 2,
+									"points": "625:487;625:536",
+									"nameLabel": {
+										"$ref": "AAAAAAFx1WO6NJCQRLY="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAFx1WPUt5CYt/c=",
+									"_parent": {
+										"$ref": "AAAAAAFx1LD0rI5T/MM="
+									},
+									"model": {
+										"$ref": "AAAAAAFx1WPUt5CWNis="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFx1WPUt5CZFzE=",
+											"_parent": {
+												"$ref": "AAAAAAFx1WPUt5CYt/c="
+											},
+											"model": {
+												"$ref": "AAAAAAFx1WPUt5CWNis="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 760,
+											"top": 559,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAFx1WPUt5CYt/c="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAFx1SXo+JAb80s="
+									},
+									"tail": {
+										"$ref": "AAAAAAFx1WHCA5B75sA="
+									},
+									"lineStyle": 2,
+									"points": "712:580;808:580",
+									"nameLabel": {
+										"$ref": "AAAAAAFx1WPUt5CZFzE="
 									}
 								}
 							]
@@ -1629,7 +1787,7 @@
 							"ownedElements": [
 								{
 									"_type": "FCFlow",
-									"_id": "AAAAAAFx1TBy8pA+neo=",
+									"_id": "AAAAAAFx1V2b15BqVq0=",
 									"_parent": {
 										"$ref": "AAAAAAFx1M/f14+kJVI="
 									},
@@ -1637,7 +1795,7 @@
 										"$ref": "AAAAAAFx1M/f14+kJVI="
 									},
 									"target": {
-										"$ref": "AAAAAAFx1SXo9JAZrgI="
+										"$ref": "AAAAAAFx1VTr+ZBbngA="
 									}
 								}
 							]
@@ -1694,7 +1852,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFx1LD0rI5SAl4="
 							},
-							"name": "Filter nearby coordinate based on collector's position and radius distance",
+							"name": "Combine all result of searching scraps",
 							"ownedElements": [
 								{
 									"_type": "FCFlow",
@@ -1717,7 +1875,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFx1LD0rI5SAl4="
 							},
-							"name": "For each data in nearby result, get detail information of scrap",
+							"name": "For each data in search nearby result, get detail information of scrap, and calculate distance of scrap",
 							"ownedElements": [
 								{
 									"_type": "FCFlow",
@@ -1730,6 +1888,52 @@
 									},
 									"target": {
 										"$ref": "AAAAAAFx1QpwXo/NyLM="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAFx1VTr+ZBbngA=",
+							"_parent": {
+								"$ref": "AAAAAAFx1LD0rI5SAl4="
+							},
+							"name": "Create range set with lower range and upper range based on inputted radius",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAFx1WO6NJCNGNw=",
+									"_parent": {
+										"$ref": "AAAAAAFx1VTr+ZBbngA="
+									},
+									"source": {
+										"$ref": "AAAAAAFx1VTr+ZBbngA="
+									},
+									"target": {
+										"$ref": "AAAAAAFx1WHCApB5XvI="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAFx1WHCApB5XvI=",
+							"_parent": {
+								"$ref": "AAAAAAFx1LD0rI5SAl4="
+							},
+							"name": "For each range in range set, search scrap between lower range and upper range",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAFx1WPUt5CWNis=",
+									"_parent": {
+										"$ref": "AAAAAAFx1WHCApB5XvI="
+									},
+									"source": {
+										"$ref": "AAAAAAFx1WHCApB5XvI="
+									},
+									"target": {
+										"$ref": "AAAAAAFx1SXo9JAZrgI="
 									}
 								}
 							]
